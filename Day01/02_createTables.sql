@@ -29,7 +29,7 @@ CREATE TABLE Roles
 	Gender VARCHAR(10),
 	DOB DATE,
 	Address VARCHAR(255),
-	Phone VARCHAR(255),
+	Phone VARCHAR(20),
 	Email VARCHAR(100),
 	DeptID INT,
 	UserID INT,
