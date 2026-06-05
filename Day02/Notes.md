@@ -9,6 +9,13 @@
 * Default Constraint
 * Identity Column
 * CRUD Operations
+* WHERE
+* AND / OR
+* IN
+* BETWEEN
+* LIKE
+* ORDER BY
+* Aggregate Functions
 
 ---
 
@@ -18,7 +25,6 @@
 
 * Uniquely identifies each record.
 * Cannot contain NULL values.
-* No duplicate values allowed.
 
 ### Foreign Key
 
@@ -27,19 +33,19 @@
 
 ### Unique Constraint
 
-* Prevents duplicate values in a column.
+* Prevents duplicate values.
 
 ### Default Constraint
 
-* Assigns a default value when no value is provided.
+* Assigns a default value automatically.
 
 ### Identity Column
 
-* Generates auto-increment values automatically.
+* Generates auto-increment values.
 
 ### Not Null
 
-* Ensures a column must contain a value.
+* Ensures mandatory data entry.
 
 ---
 
@@ -56,68 +62,104 @@
 
 ### Create
 
-```sql
-INSERT INTO TableName (...)
-VALUES (...);
-```
+* INSERT
 
 ### Read
 
-```sql
-SELECT * FROM TableName;
-```
+* SELECT
 
 ### Update
 
-```sql
-UPDATE TableName
-SET ColumnName = Value
-WHERE Condition;
-```
+* UPDATE
 
 ### Delete
 
-```sql
-DELETE FROM TableName
-WHERE Condition;
-```
+* DELETE
 
 ---
 
-## Additional Queries Practiced
+## Filtering Operators
 
-```sql
-WHERE
-```
+### WHERE
 
-```sql
-ORDER BY
-```
+Used to filter records based on specified conditions.
 
-```sql
-INNER JOIN
-```
+### AND
+
+Returns records when all conditions are true.
+
+### OR
+
+Returns records when at least one condition is true.
+
+### IN
+
+Filters records using a list of values.
+
+### BETWEEN
+
+Filters records within a specified range.
+
+### LIKE
+
+Performs pattern matching.
+
+---
+
+## Sorting
+
+### ORDER BY
+
+* ASC (Ascending)
+* DESC (Descending)
+
+---
+
+## Aggregate Functions
+
+### COUNT()
+
+Returns the number of records.
+
+### SUM()
+
+Returns the total of numeric values.
+
+### AVG()
+
+Returns the average value.
+
+### MAX()
+
+Returns the highest value.
+
+### MIN()
+
+Returns the lowest value.
 
 ---
 
 ## Activities Performed
 
-* Added UNIQUE constraints
-* Added FOREIGN KEY relationships
-* Inserted sample data into tables
-* Performed CRUD operations
-* Executed SELECT queries with conditions
-* Performed INNER JOIN between Employees and Departments
+* Added constraints to database tables.
+* Implemented foreign key relationships.
+* Inserted sample data into tables.
+* Performed CRUD operations.
+* Executed INNER JOIN queries.
+* Practiced filtering using WHERE, AND, OR, IN, BETWEEN, and LIKE.
+* Sorted records using ORDER BY.
+* Performed aggregate calculations using COUNT, SUM, AVG, MAX, and MIN.
 
 ---
 
 ## Challenges Faced
 
 * Duplicate data insertion due to repeated execution of INSERT statements.
-* Constraint creation error when attempting to add an existing constraint.
+* Existing constraint error while re-adding UNIQUE constraints.
+* SQL Server connection issues and reconnection troubleshooting.
 
 ---
 
 ## Outcome
 
-Successfully implemented table relationships, inserted sample data, and performed CRUD operations using SQL Server.
+Successfully implemented constraints, relationships, sample data insertion, CRUD operations, JOIN queries, filtering, sorting, and aggregate functions using SQL Server.
