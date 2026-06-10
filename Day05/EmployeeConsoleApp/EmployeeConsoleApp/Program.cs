@@ -140,3 +140,27 @@ mgr.Work();
 //interface 
 IEmployee emp1 = new HR();
 emp1.Work();
+
+//day 07
+//Exception handling 
+/*ExceptionHandling demo = new ExceptionHandling();
+demo.Run();
+*/
+
+//Linq
+/*Linq demo = new Linq();
+demo.Run();
+*/
+/*DelegateDemo demo = new DelegateDemo();
+demo.Run();
+*/
+/*
+AsyncAwaitDemo demo =
+    new AsyncAwaitDemo();
+
+await demo.Run();
+*/
+string name = "hrishita";
+
+Console.WriteLine(
+    name.ToUpperFirst());
