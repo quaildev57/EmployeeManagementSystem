@@ -1,4 +1,4 @@
-# Day 7 Notes
+# Day 6 Notes
 
 ## Topics Covered
 
