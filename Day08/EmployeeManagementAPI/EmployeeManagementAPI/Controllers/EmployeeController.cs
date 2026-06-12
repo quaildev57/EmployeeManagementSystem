@@ -1,5 +1,5 @@
 using EmployeeManagementAPI.Models;
-using EmployeeManagementAPI.Services;
+using EmployeeManagementAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagementAPI.Controllers
@@ -8,58 +8,59 @@ namespace EmployeeManagementAPI.Controllers
     [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
-        private readonly EmployeeService _employeeService;
+        private readonly EmployeeRepository _repository;
 
-        public EmployeeController(EmployeeService employeeService)
+        public EmployeeController(EmployeeRepository repository)
         {
-            _employeeService = employeeService;
+            _repository = repository;
         }
 
         [HttpGet]
         public IActionResult GetEmployees()
         {
-            var employees = new[]
-            {
-                new
-                {
-                    Id = 1,
-                    Name = "Hrishita",
-                    Department = "IT"
-                },
-                new
-                {
-                    Id = 2,
-                    Name = "Rahul",
-                    Department = "HR"
-                }
-            };
+            var employees = _repository.GetEmployees();
 
             return Ok(employees);
         }
-
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(int id)
         {
-            var employee = new
-            {
-                Id = id,
-                Name = "Hrishita",
-                Department = "IT"
-            };
+            var employee = _repository.GetEmployeeById(id);
+
+            if (employee == null)
+                return NotFound();
 
             return Ok(employee);
         }
-
         [HttpPost]
-        public IActionResult CreateEmployee(Employee employee)
+        public IActionResult AddEmployee(Employee employee)
         {
-            return Ok(employee);
-        }
+            int rows = _repository.AddEmployee(employee);
 
-        [HttpGet("message")]
-        public IActionResult GetMessage()
+            if (rows > 0)
+                return Ok("Employee Added Successfully");
+
+            return BadRequest();
+        }
+        [HttpPut]
+        public IActionResult UpdateEmployee(Employee employee)
         {
-            return Ok(_employeeService.GetMessage());
+            int rows = _repository.UpdateEmployee(employee);
+
+            if (rows > 0)
+                return Ok("Employee Updated Successfully");
+
+            return BadRequest();
+        }
+        [HttpPut("inactivate/{id}")]
+        public IActionResult InactivateEmployee(int id)
+        {
+            int rows = _repository.InactivateEmployee(id);
+
+            if (rows > 0)
+                return Ok("Employee Inactivated");
+
+            return BadRequest();
         }
     }
 }

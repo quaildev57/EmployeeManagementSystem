@@ -1,12 +1,13 @@
 using EmployeeManagementAPI.Services;
+using EmployeeManagementAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<EmployeeRepository>();
+
 builder.Services.AddScoped<EmployeeService>();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
