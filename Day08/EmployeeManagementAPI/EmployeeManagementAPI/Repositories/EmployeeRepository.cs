@@ -1,10 +1,11 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using EmployeeManagementAPI.Models; 
+using EmployeeManagementAPI.Models;
+using EmployeeManagementAPI.Interfaces;
 
 namespace EmployeeManagementAPI.Repositories
 {
-    public class EmployeeRepository
+    public class EmployeeRepository: IEmployeeRepository
     {
         private readonly IConfiguration _configuration;
         public EmployeeRepository(IConfiguration configuration)

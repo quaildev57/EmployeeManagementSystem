@@ -1,13 +1,14 @@
 using EmployeeManagementAPI.Services;
 using EmployeeManagementAPI.Repositories;
+using EmployeeManagementAPI.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
-builder.Services.AddScoped<EmployeeService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
