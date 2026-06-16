@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using EmployeeManagementAPI.Models;
 using EmployeeManagementAPI.Interfaces;
+using System.Data;
 
 namespace EmployeeManagementAPI.Repositories
 {
@@ -12,91 +13,86 @@ namespace EmployeeManagementAPI.Repositories
         {
             _configuration = configuration;
         }
-        public IEnumerable<Employee> GetEmployees(){
+        public IEnumerable<Employee> GetEmployees()
+        {
             using var connection = new SqlConnection(
-                _configuration.GetConnectionString("DefaultConnection"));
-            string query = "SELECT * FROM Employees";
-            return connection.Query<Employee>(query);
+                _configuration.GetConnectionString("DefaultConn"));
+
+            return connection.Query<Employee>(
+                "GetEmployees",
+                commandType: System.Data.CommandType.StoredProcedure
+            );
         }
         public Employee GetEmployeeById(int id)
         {
             using var connection = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
 
-            string query =
-                "SELECT * FROM Employees WHERE EmpID = @EmpID";
-
             return connection.QueryFirstOrDefault<Employee>(
-                query,
-                new { EmpID = id });
+                "GetEmployeeById",
+                new { EmpID = id },
+                commandType: CommandType.StoredProcedure);
         }
         public int AddEmployee(Employee employee)
         {
             using var connection = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
 
-            string query = @"
-        INSERT INTO Employees
-        (
-            FullName,
-            Gender,
-            DOB,
-            Address,
-            Phone,
-            Email,
-            DeptID,
-            UserID,
-            JoinDate,
-            Salary,
-            IsActive
-        )
-        VALUES
-        (
-            @FullName,
-            @Gender,
-            @DOB,
-            @Address,
-            @Phone,
-            @Email,
-            @DeptID,
-            @UserID,
-            @JoinDate,
-            @Salary,
-            @IsActive
-        )";
-
-            return connection.Execute(query, employee);
+            return connection.Execute(
+                "AddEmployee",
+                employee,
+                commandType: CommandType.StoredProcedure);
         }
+        //public int UpdateEmployee(Employee employee)
+        //{
+        //    using var connection = new SqlConnection(
+        //        _configuration.GetConnectionString("DefaultConnection"));
+
+        //    string query = @"
+        //UPDATE Employees
+        //SET
+        //    FullName = @FullName,
+        //    Gender = @Gender,
+        //    Phone = @Phone,
+        //    Email = @Email,
+        //    Salary = @Salary
+        //WHERE EmpID = @EmpID";
+
+        //    return connection.Execute(query, employee);
+        //}
         public int UpdateEmployee(Employee employee)
         {
             using var connection = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
 
-            string query = @"
-        UPDATE Employees
-        SET
-            FullName = @FullName,
-            Gender = @Gender,
-            Phone = @Phone,
-            Email = @Email,
-            Salary = @Salary
-        WHERE EmpID = @EmpID";
-
-            return connection.Execute(query, employee);
+            return connection.Execute(
+                "UpdateEmployee",
+                employee,
+                commandType: CommandType.StoredProcedure);
         }
+        //public int InactivateEmployee(int id)
+        //{
+        //    using var connection = new SqlConnection(
+        //        _configuration.GetConnectionString("DefaultConnection"));
+
+        //    string query = @"
+        //UPDATE Employees
+        //SET IsActive = 0
+        //WHERE EmpID = @EmpID";
+
+        //    return connection.Execute(
+        //        query,
+        //        new { EmpID = id });
+        //}
         public int InactivateEmployee(int id)
         {
             using var connection = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
 
-            string query = @"
-        UPDATE Employees
-        SET IsActive = 0
-        WHERE EmpID = @EmpID";
-
             return connection.Execute(
-                query,
-                new { EmpID = id });
+                "InactivateEmployee",
+                new { EmpID = id },
+                commandType: CommandType.StoredProcedure);
         }
 
     }

@@ -1,8 +1,15 @@
-create procedure GetEmployeeById @EmpID INT
-AS 
-BEGIN
-	SELECT * From Employees where EmpID = @EmpID;
-END;
+USE EmployeeManagementDB;
 GO
-EXEC GetEmployeeById 1;
+
+DROP PROCEDURE IF EXISTS GetEmployeeById;
+GO
+
+CREATE PROCEDURE GetEmployeeById
+    @EmpID INT
+AS
+BEGIN
+    SELECT *
+    FROM Employees
+    WHERE EmpID = @EmpID;
+END
 GO

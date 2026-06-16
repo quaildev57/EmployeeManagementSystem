@@ -38,16 +38,19 @@ namespace EmployeeManagementAPI.Services
                 //and not just blindly forwarding the call to the repository layer.
             }
             return _repository.AddEmployee(employee);*/
-            try
-            {
-                if (employee.Salary < 0)
-                    throw new Exception("Salary can't be negative.");
-                return _repository.AddEmployee(employee);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            /* try
+             {
+                 if (employee.Salary < 0)
+                     throw new Exception("Salary can't be negative.");
+                 return _repository.AddEmployee(employee);
+             }
+             catch (Exception)
+             {
+                 throw;
+             }*/
+            //throw new Exception("Testing Middleware");
+
+            return _repository.AddEmployee(employee);
         }
         
         public int UpdateEmployee(Employee employee)

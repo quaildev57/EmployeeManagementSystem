@@ -35,6 +35,7 @@ namespace EmployeeManagementAPI.Controllers
         [HttpGet]
         public IActionResult GetEmployees()
         {
+            Console.WriteLine("GET API HIT");
             //var employees = _service.GetEmployees();
             _logger.LogInformation("GetEmployees API called");
             return Ok(_service.GetEmployees());
@@ -53,16 +54,16 @@ namespace EmployeeManagementAPI.Controllers
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
-            try
-            {
+            //try
+            //{
                 int rows = _service.AddEmployee(employee);
                 //if (rows > 0)
                   return Ok("Employee Added Successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+                //return BadRequest(ex.Message);
+           // }
 
         }
 

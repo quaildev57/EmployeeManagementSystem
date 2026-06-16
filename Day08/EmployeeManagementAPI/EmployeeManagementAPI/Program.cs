@@ -1,6 +1,7 @@
 using EmployeeManagementAPI.Services;
 using EmployeeManagementAPI.Repositories;
 using EmployeeManagementAPI.Interfaces;
+using EmployeeManagementAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
