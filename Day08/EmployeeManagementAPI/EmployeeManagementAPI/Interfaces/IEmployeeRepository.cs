@@ -13,5 +13,9 @@ namespace EmployeeManagementAPI.Interfaces
         int UpdateEmployee(Employee employee);
 
         int InactivateEmployee(int id);
+
+        User? ValidateUser(
+            string username,
+            string password);
     }
 }

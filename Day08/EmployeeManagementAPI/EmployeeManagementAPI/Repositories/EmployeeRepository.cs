@@ -95,5 +95,22 @@ namespace EmployeeManagementAPI.Repositories
                 commandType: CommandType.StoredProcedure);
         }
 
+        public User? ValidateUser(  //added this questionmark to indicate that the method can return null if no user is found
+    string username,
+    string password)
+        {
+            using var connection = new SqlConnection(
+                _configuration.GetConnectionString("DefaultConnection"));
+
+            return connection.QueryFirstOrDefault<User>(
+                "ValidateUser",
+                new
+                {
+                    Username = username,
+                    PasswordHash = password
+                },
+                commandType: CommandType.StoredProcedure);
+        }
+
     }
 }
