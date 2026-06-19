@@ -54,6 +54,8 @@ namespace EmployeeManagementAPI.Controllers
 
             return Ok(employee);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
@@ -70,7 +72,9 @@ namespace EmployeeManagementAPI.Controllers
 
         }
 
+        [Authorize(Roles = "Admin,HR")]
         [HttpPut]
+
         public IActionResult UpdateEmployee(Employee employee)
         {
             int rows = _service.UpdateEmployee(employee);
@@ -80,6 +84,7 @@ namespace EmployeeManagementAPI.Controllers
 
             return BadRequest();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut("inactivate/{id}")]
         public IActionResult InactivateEmployee(int id)
         {

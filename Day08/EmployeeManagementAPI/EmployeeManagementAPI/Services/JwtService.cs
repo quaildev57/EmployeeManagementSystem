@@ -18,12 +18,27 @@ namespace EmployeeManagementAPI.Services
 
         public string GenerateToken(User user)
         {
+            //var claims = new[]
+            //{
+            //    new Claim(ClaimTypes.Name, user.Username),
+            //    new Claim("UserID", user.UserID.ToString()),
+            //    new Claim("RoleID", user.RoleID.ToString())
+            //};
+
+            string role = user.RoleID switch
+            {
+                1 => "Admin",
+                2 => "HR",
+                3 => "Employee",
+                _ => "Employee"
+            };
+
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim("UserID", user.UserID.ToString()),
-                new Claim("RoleID", user.RoleID.ToString())
-            };
+    new Claim(ClaimTypes.Name, user.Username),
+    new Claim("UserID", user.UserID.ToString()),
+    new Claim(ClaimTypes.Role, role)
+};
 
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(
