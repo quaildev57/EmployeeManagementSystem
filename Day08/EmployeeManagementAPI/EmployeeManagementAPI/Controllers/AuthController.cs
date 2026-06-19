@@ -9,10 +9,12 @@ namespace EmployeeManagementAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly IJwtService _jwtService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, IJwtService jwtService)
         {
             _authService = authService;
+            _jwtService = jwtService;
         }
 
         [HttpPost("login")]
@@ -28,14 +30,15 @@ namespace EmployeeManagementAPI.Controllers
                         Message = "Invalid Username or Password"
                     });
             }
-
+            var token = _jwtService.GenerateToken(user);
             return Ok(
                 new
                 {
                     Message = "Login Successful",
-                    UserID = user.UserID,
-                    Username = user.Username,
-                    RoleID = user.RoleID
+                    //UserID = user.UserID,
+                    //Username = user.Username,
+                    //RoleID = user.RoleID
+                    Token = token 
                 });
         }
     }

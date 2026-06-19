@@ -4,6 +4,7 @@ using EmployeeManagementAPI.Repositories;
 using EmployeeManagementAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagementAPI.Controllers
 {
@@ -14,6 +15,8 @@ namespace EmployeeManagementAPI.Controllers
     //it would have been used to return views, but since we are building
     //an API, we will inherit from ControllerBase which is used for APIs and
     //does not have view support.
+
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         /*private readonly EmployeeRepository _repository;

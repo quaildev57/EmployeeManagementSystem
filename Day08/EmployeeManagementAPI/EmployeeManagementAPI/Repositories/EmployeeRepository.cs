@@ -16,7 +16,7 @@ namespace EmployeeManagementAPI.Repositories
         public IEnumerable<Employee> GetEmployees()
         {
             using var connection = new SqlConnection(
-                _configuration.GetConnectionString("DefaultConn"));
+                _configuration.GetConnectionString("DefaultConnection"));
 
             return connection.Query<Employee>(
                 "GetEmployees",
@@ -27,7 +27,7 @@ namespace EmployeeManagementAPI.Repositories
         {
             using var connection = new SqlConnection(
                 _configuration.GetConnectionString("DefaultConnection"));
-
+            
             return connection.QueryFirstOrDefault<Employee>(
                 "GetEmployeeById",
                 new { EmpID = id },
