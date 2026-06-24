@@ -37,7 +37,8 @@ namespace EmployeeManagementAPI.Services
             {
     new Claim(ClaimTypes.Name, user.Username),
     new Claim("UserID", user.UserID.ToString()),
-    new Claim(ClaimTypes.Role, role)
+    new Claim(ClaimTypes.Role, role),
+    new Claim("Department", "IT")
 };
 
             var key = new SymmetricSecurityKey(

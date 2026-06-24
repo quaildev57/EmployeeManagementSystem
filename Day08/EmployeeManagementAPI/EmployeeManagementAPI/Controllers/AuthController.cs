@@ -1,6 +1,8 @@
 ﻿using EmployeeManagementAPI.Interfaces;
 using EmployeeManagementAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace EmployeeManagementAPI.Controllers
 {
@@ -37,9 +39,43 @@ namespace EmployeeManagementAPI.Controllers
                     Message = "Login Successful",
                     //UserID = user.UserID,
                     //Username = user.Username,
-                    //RoleID = user.RoleID
-                    Token = token 
-                });
+                    //RoleID = user.RoleI                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           D
+                    Token = token
+                }
+
+                );
         }
+            [Authorize]
+            [HttpGet("me")]
+            public IActionResult GetCurrentUser()
+            {
+                var username = User.FindFirst(ClaimTypes.Name)?.Value;
+
+                var userId = User.FindFirst("UserID")?.Value;
+
+                var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var department = User.FindFirst("Department")?.Value;
+
+                return Ok(new
+                {
+                    UserID = userId,
+                    Username = username,
+                    Role = role,
+                    Department = department
+                });
+            }
+        //adding this temporarily to see what ASP.NET extracted from JWT
+        [Authorize]
+        [HttpGet("claims")]
+        public IActionResult GetClaims()
+        {
+            return Ok(
+                User.Claims.Select(c => new
+                {
+                    c.Type,
+                    c.Value
+                }));
+        }
+
     }
 }
