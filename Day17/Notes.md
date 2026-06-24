@@ -63,3 +63,7 @@ if (app.Environment.IsDevelopment())
 ## Key Learning
 
 Swagger acts as a self-documenting interface for APIs, making development, testing, and integration easier across teams.
+
+## Challenges I faced and resolved
+
+Faced package compatibility and namespace issues while integrating Swagger with .NET 10 and JWT authentication. Investigated package dependencies, configured Swagger successfully, and documented the limitations encountered with JWT authorization integration in the current preview environment.
