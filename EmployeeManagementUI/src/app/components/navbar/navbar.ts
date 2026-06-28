@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar {}
+export class Navbar {
+  title =  " Employee Management System";
+  username = "Hrishita";
+  showMessage(){
+    alert("Welcome "+this.username)
+  }
+}
