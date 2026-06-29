@@ -5,15 +5,18 @@
     <h2>Employee Management System</h2>
 
     <h3>Login</h3>
-    <input 
+    <input [(ngModel)]="username"
     type ="text"
     placeholder ="Username">
+    <p>Username:{{username}}</p>
+    <p>Password:{{password}}</p>
 
     <br><br>
-    <input
+    <input 
     type="password"
-    palceholder = "Password">
+    palceholder = "Password"
+    [(ngModel)]="password">
     <br><br>
-    <button>
+    <button (click)="login()">
         Login
     </button>
