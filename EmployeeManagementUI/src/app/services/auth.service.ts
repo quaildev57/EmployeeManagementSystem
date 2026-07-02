@@ -21,5 +21,19 @@ export class AuthService {
     );
 
   }
+  getCurrentUser() {
+
+  const token = localStorage.getItem("token");
+
+  return this.http.get(
+    `${this.apiUrl}/me`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+}
 
 }

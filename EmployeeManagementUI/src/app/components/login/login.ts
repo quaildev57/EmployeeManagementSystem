@@ -1,7 +1,7 @@
 import { AuthService } from '../../services/auth.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import{Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [FormsModule],
@@ -11,9 +11,11 @@ import { FormsModule } from '@angular/forms';
 export class Login {
   username ="";
   password ="";
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+  private router: Router) { }
 
-  login() {
+login() {
 
   this.authService.login(
     this.username,
@@ -22,21 +24,21 @@ export class Login {
 
     next: (response: any) => {
 
-  console.log(response);
+      localStorage.setItem("token", response.token);
+      this.router.navigate(['/dashboard']);
 
-  localStorage.setItem("token", response.token);
+      console.log("Login Successful");
 
-  console.log("Token Saved");
-
-},
+    },
 
     error: (error) => {
 
-      console.log(error);
+      console.error("Login Failed", error);
 
     }
 
   });
 
 }
+
 }
