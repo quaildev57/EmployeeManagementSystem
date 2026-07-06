@@ -1,0 +1,40 @@
+<h2>Add Employee</h2>
+
+<input
+type="text"
+placeholder="Full Name"
+[(ngModel)]="employee.fullName">
+
+<br><br>
+
+<input
+type="text"
+placeholder="Gender"
+[(ngModel)]="employee.gender">
+
+<br><br>
+
+<input
+type="email"
+placeholder="Email"
+[(ngModel)]="employee.email">
+
+<br><br>
+
+<input
+type="text"
+placeholder="Phone"
+[(ngModel)]="employee.phone">
+
+<br><br>
+
+<input
+type="number"
+placeholder="Salary"
+[(ngModel)]="employee.salary">
+
+<br><br>
+
+<button (click)="saveEmployee()">
+Add Employee
+</button>
