@@ -1,7 +1,7 @@
 <h1>Employee Count: {{employees.length}}</h1>
 
-<p>{{employees | json}}</p>
-<!--
+<!--<p>{{employees | json}}</p> -->
+
 <h2>Employee List</h2>
 
 <table border="1" cellpadding="10">
@@ -14,10 +14,11 @@
         <th>Phone</th>
         <th>Department</th>
         <th>Salary</th>
+        <th>Action</th>
     </tr>
 
     <tr *ngFor="let emp of employees">
-
+       
         <td>{{emp.empID}}</td>
         <td>{{emp.fullName}}</td>
         <td>{{emp.gender}}</td>
@@ -25,8 +26,11 @@
         <td>{{emp.phone}}</td>
         <td>{{emp.deptID}}</td>
         <td>{{emp.salary}}</td>
-
+        <td>
+    <button (click)="editEmployee(emp)">
+        Edit
+    </button>
+        </td>
     </tr>
 
 </table>
--->

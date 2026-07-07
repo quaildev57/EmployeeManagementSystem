@@ -40,5 +40,34 @@ return this.http.get<Employee[]>(
   );
 
 }
+updateEmployee(employee: Employee) {
+
+  const token = localStorage.getItem("token");
+
+  return this.http.put(
+    this.apiUrl,
+    employee,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+}
+getEmployeeById(id: number) {
+
+  const token = localStorage.getItem("token");
+
+  return this.http.get<Employee>(
+    `${this.apiUrl}/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+}
  
 }

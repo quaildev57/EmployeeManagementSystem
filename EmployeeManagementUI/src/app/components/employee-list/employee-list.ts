@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
 import { CommonModule } from '@angular/common';
-
+import {ChangeDetectorRef} from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-list',
   imports: [CommonModule],
@@ -14,7 +15,9 @@ export class EmployeeList implements OnInit {
 
   employees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService,
+    private cdr: ChangeDetectorRef,
+    private router: Router) {}
 
   ngOnInit(): void {
 
@@ -22,13 +25,13 @@ export class EmployeeList implements OnInit {
 
       next: (response: Employee[]) => {
 
-        console.log(response);
+  this.employees = response;
 
-        this.employees = response;
-        console.log(this.employees);
-        console.log(this.employees.length);
-      },
+  this.cdr.detectChanges();
 
+  console.log("Assigned:", this.employees.length);
+
+},
       error: (error) => {
 
         console.log(error);
@@ -37,6 +40,8 @@ export class EmployeeList implements OnInit {
 
     });
 
+}
+editEmployee(employee: Employee) {
+  this.router.navigate(['/edit', employee.empID]);
   }
-
 }
