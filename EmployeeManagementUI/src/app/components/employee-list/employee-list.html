@@ -26,11 +26,16 @@
         <td>{{emp.phone}}</td>
         <td>{{emp.deptID}}</td>
         <td>{{emp.salary}}</td>
+        
         <td>
     <button (click)="editEmployee(emp)">
         Edit
     </button>
-        </td>
+
+    <button (click)="deleteEmployee(emp.empID)">
+        Delete
+    </button>
+</td>
     </tr>
 
 </table>

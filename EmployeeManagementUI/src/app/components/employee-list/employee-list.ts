@@ -44,4 +44,53 @@ export class EmployeeList implements OnInit {
 editEmployee(employee: Employee) {
   this.router.navigate(['/edit', employee.empID]);
   }
+    loadEmployees() {
+
+    this.employeeService.getEmployees().subscribe({
+
+      next: (response: Employee[]) => {
+
+        this.employees = response;
+
+        this.cdr.detectChanges();
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+      }
+
+    });
+
+  }
+  deleteEmployee(id: number) {
+
+    const confirmDelete = confirm(
+      "Are you sure you want to inactivate this employee?"
+    );
+
+    if (!confirmDelete) return;
+
+    this.employeeService.inactivateEmployee(id).subscribe({
+
+      next: () => {
+
+        alert("Employee Inactivated Successfully");
+
+        // Refresh employee list
+        this.loadEmployees();
+
+      },
+
+      error: (error) => {
+
+        console.log(error);
+
+      }
+
+    });
+
+  }
 }

@@ -11,63 +11,60 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
+  // Get All Employees
   getEmployees() {
 
-    const token = localStorage.getItem("token");
-    console.log("Employee Token:", token);
-return this.http.get<Employee[]>(
-  this.apiUrl,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }
-);
+    return this.http.get<Employee[]>(this.apiUrl);
 
   }
+
+  // Get Employee By ID
+  getEmployeeById(id: number) {
+
+    return this.http.get<Employee>(
+      `${this.apiUrl}/${id}`
+    );
+
+  }
+
+  // Add Employee
   addEmployee(employee: Employee) {
 
-  const token = localStorage.getItem("token");
+    return this.http.post(
+      this.apiUrl,
+      employee
+    );
 
-  return this.http.post(
-    this.apiUrl,
-    employee,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+  }
 
-}
-updateEmployee(employee: Employee) {
+  // Update Employee
+  updateEmployee(employee: Employee) {
 
-  const token = localStorage.getItem("token");
+    return this.http.put(
+      this.apiUrl,
+      employee
+    );
 
-  return this.http.put(
-    this.apiUrl,
-    employee,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+  }
 
-}
-getEmployeeById(id: number) {
+  // Soft Delete / Inactivate Employee
+  inactivateEmployee(id: number) {
 
-  const token = localStorage.getItem("token");
+    return this.http.put(
+      `${this.apiUrl}/inactivate/${id}`,
+      {}
+    );
 
-  return this.http.get<Employee>(
-    `${this.apiUrl}/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+  }
 
 }
- 
+
+/* earlier:
+const token = localStorage.getItem("token");
+
+headers: {
+    Authorization: `Bearer ${token}`
 }
+
+i.e. now authentication is handled by the authInterceptor, 
+so we don't need to manually set the Authorization header in each service method. */
