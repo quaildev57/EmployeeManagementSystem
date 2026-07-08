@@ -40,7 +40,21 @@ namespace EmployeeManagementAPI.Repositories
 
             return connection.Execute(
                 "AddEmployee",
-                employee,
+                
+        new
+        {
+            employee.FullName,
+            employee.Gender,
+            employee.DOB,
+            employee.Address,
+            employee.Phone,
+            employee.Email,
+            employee.DeptID,
+            employee.UserID,
+            employee.JoinDate,
+            employee.Salary,
+            employee.IsActive
+        },
                 commandType: CommandType.StoredProcedure);
         }
         //public int UpdateEmployee(Employee employee)

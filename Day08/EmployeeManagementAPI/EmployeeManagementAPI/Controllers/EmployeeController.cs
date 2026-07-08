@@ -55,9 +55,9 @@ namespace EmployeeManagementAPI.Controllers
             return Ok(employee);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,HR")]
         [HttpPost]
-        public IActionResult AddEmployee(Employee employee)
+        public IActionResult AddEmployee([FromBody]Employee employee)
         {
             //try
             //{
@@ -84,7 +84,7 @@ namespace EmployeeManagementAPI.Controllers
 
             return BadRequest();
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, HR")]
         [HttpPut("inactivate/{id}")]
         public IActionResult InactivateEmployee(int id)
         {
