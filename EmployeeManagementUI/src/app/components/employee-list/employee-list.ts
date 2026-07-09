@@ -4,9 +4,11 @@ import { Employee } from '../../models/employee';
 import { CommonModule } from '@angular/common';
 import {ChangeDetectorRef} from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-employee-list',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-list.html',
   styleUrl: './employee-list.css',
   standalone: true,
@@ -14,31 +16,19 @@ import { Router } from '@angular/router';
 export class EmployeeList implements OnInit {
 
   employees: Employee[] = [];
+  filteredEmployees: Employee[] = [];
+  searchText = "";
+  sortDirection = true; // true matlab ascending
+  currentSort = "";
+  selectedFilter = "all";
 
   constructor(private employeeService: EmployeeService,
     private cdr: ChangeDetectorRef,
     private router: Router) {}
 
-  ngOnInit(): void {
+ngOnInit(): void {
 
-    this.employeeService.getEmployees().subscribe({
-
-      next: (response: Employee[]) => {
-
-  this.employees = response;
-
-  this.cdr.detectChanges();
-
-  console.log("Assigned:", this.employees.length);
-
-},
-      error: (error) => {
-
-        console.log(error);
-
-      }
-
-    });
+  this.loadEmployees();
 
 }
 editEmployee(employee: Employee) {
@@ -51,7 +41,8 @@ editEmployee(employee: Employee) {
       next: (response: Employee[]) => {
 
         this.employees = response;
-
+        //this.filteredEmployees = response;
+        this.applyFilters();
         this.cdr.detectChanges();
 
       },
@@ -81,6 +72,7 @@ editEmployee(employee: Employee) {
 
         // Refresh employee list
         this.loadEmployees();
+        
 
       },
 
@@ -93,4 +85,83 @@ editEmployee(employee: Employee) {
     });
 
   }
+  applyFilters() {
+
+  // Start with all employees
+  let result = [...this.employees];
+
+  // Filter by Active / Inactive
+  if (this.selectedFilter === "active") {
+
+    result = result.filter(emp => emp.isActive);
+
+  }
+  else if (this.selectedFilter === "inactive") {
+
+    result = result.filter(emp => !emp.isActive);
+
+  }
+
+  // Search
+  const search = this.searchText.toLowerCase().trim();
+
+  if (search !== "") {
+
+    result = result.filter(emp =>
+
+      emp.empID.toString().includes(search) ||
+
+      emp.fullName.toLowerCase().includes(search) ||
+
+      emp.email.toLowerCase().includes(search) ||
+
+      emp.phone.toLowerCase().includes(search) ||
+
+      emp.deptID.toString().includes(search) ||
+
+      emp.salary.toString().includes(search)
+
+    );
+
+  }
+
+  this.filteredEmployees = result;
+
+}
+sortEmployees(column: string) {
+
+  if (this.currentSort === column) {
+
+    this.sortDirection = !this.sortDirection;
+
+  } else {
+
+    this.currentSort = column;
+    this.sortDirection = true;
+
+  }
+
+  this.filteredEmployees.sort((a: any, b: any) => {
+
+    let valueA = a[column];
+    let valueB = b[column];
+
+    if (typeof valueA === 'string') {
+
+      valueA = valueA.toLowerCase();
+      valueB = valueB.toLowerCase();
+
+    }
+
+    if (valueA < valueB)
+      return this.sortDirection ? -1 : 1;
+
+    if (valueA > valueB)
+      return this.sortDirection ? 1 : -1;
+
+    return 0;
+
+  });
+
+}
 }

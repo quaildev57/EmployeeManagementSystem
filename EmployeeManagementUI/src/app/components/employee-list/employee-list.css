@@ -1,0 +1,22 @@
+.search-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+}
+th{
+
+    cursor:pointer;
+
+}
+
+th:hover{
+
+    background:#f1f1f1;
+
+}

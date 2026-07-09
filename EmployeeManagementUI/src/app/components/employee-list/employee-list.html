@@ -4,20 +4,83 @@
 
 <h2>Employee List</h2>
 
+<br>
+<div class="search-container">
+
+    <span>🔍</span>
+
+    <input
+        type="text"
+        class="search-box"
+        placeholder="Search Employee..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()">
+
+</div>
+
+
+<br><br>
+
 <table border="1" cellpadding="10">
 
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Department</th>
-        <th>Salary</th>
-        <th>Action</th>
+      
+<th (click)="sortEmployees('empID')">
+    ID
+        <span *ngIf="currentSort=='empID'">
+
+        {{sortDirection ? '▲' : '▼'}}
+
+    </span>
+</th>
+<th (click) ="sortEmployees('fullName')">
+    Name
+        <span *ngIf="currentSort=='fullName'">
+
+        {{sortDirection ? '▲' : '▼'}}
+
+    </span>
+</th>
+
+
+
+<th (click)="sortEmployees('gender')">
+    Gender
+        <span *ngIf="currentSort=='gender'">
+
+        {{sortDirection ? '▲' : '▼'}}
+
+    </span>
+</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+
+<th (click)="sortEmployees('deptID')">
+    Department
+        <span *ngIf="currentSort=='deptID'">
+
+        {{sortDirection ? '▲' : '▼'}}
+
+    </span>
+</th>
+
+<th (click)="sortEmployees('salary')">
+    Salary
+        <span *ngIf="currentSort=='salary'">
+
+        {{sortDirection ? '▲' : '▼'}}
+
+    </span>
+</th>
+
+     <th>Action</th>
     </tr>
 
-    <tr *ngFor="let emp of employees">
+
+    <tr *ngFor="let emp of filteredEmployees">
        
         <td>{{emp.empID}}</td>
         <td>{{emp.fullName}}</td>
@@ -39,3 +102,8 @@
     </tr>
 
 </table>
+<div *ngIf="filteredEmployees.length === 0">
+
+    <h3>No Employees Found</h3>
+
+</div>
