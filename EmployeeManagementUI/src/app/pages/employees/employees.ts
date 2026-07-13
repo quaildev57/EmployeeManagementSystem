@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-employee-list',
   imports: [CommonModule, FormsModule],
   templateUrl: './employee-list.html',
-  styleUrl: './employee-list.css',
+  styleUrl: './employee-list.scss',
   standalone: true,
 })
 export class EmployeeList implements OnInit {

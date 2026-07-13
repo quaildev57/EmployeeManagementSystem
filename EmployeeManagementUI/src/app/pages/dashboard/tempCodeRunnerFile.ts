@@ -5,7 +5,7 @@ import { ChangeDetectorRef } from '@angular/core';
   selector: 'app-dashboard',
   imports: [],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  styleUrl: './dashboard.scss'
 })
 export class Dashboard implements OnInit {
   username = "";

@@ -8,8 +8,8 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-add-employee',
   imports: [FormsModule],
-  templateUrl: './add-employee.html',
-  styleUrl: './add-employee.css'
+  templateUrl: './employee-form.html',
+  styleUrl: './employee-form.scss'
 })
 export class AddEmployee implements OnInit {
   ngOnInit(): void {
