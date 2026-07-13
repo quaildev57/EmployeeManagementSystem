@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { Login } from './components/login/login';
-import { Dashboard } from './components/dashboard/dashboard';
-import { EmployeeList } from './components/employee-list/employee-list';
-import { AddEmployee } from './components/add-employee/add-employee';
-import { authGuard } from './guards/auth-guard';
-import { loginGuard } from './guards/login-guard';
+import { Login } from './pages/login/login';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { EmployeeList } from './pages/employees/employees';
+import { AddEmployee } from './pages/employee-form/employee-form';
+import { authGuard } from './core/guards/auth-guard';
+import { loginGuard } from './core/guards/login-guard';
 
 export const routes: Routes = [
     {

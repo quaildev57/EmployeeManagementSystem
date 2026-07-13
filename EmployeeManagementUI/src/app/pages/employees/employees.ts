@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
-import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../core/services/employee.service';
+import { Employee } from '../../shared/models/employee';
 import { CommonModule } from '@angular/common';
 import {ChangeDetectorRef} from '@angular/core';
 import { Router } from '@angular/router';

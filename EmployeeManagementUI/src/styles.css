@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "@fontsource/inter";
+
+:root{
+
+    --primary:#0052CC;
+
+    --primary-light:#4C9AFF;
+
+    --background:#F4F5F7;
+
+    --surface:#FFFFFF;
+
+    --text:#172B4D;
+
+    --secondary:#6B778C;
+
+    --success:#36B37E;
+
+    --danger:#DE350B;
+
+    --warning:#FFAB00;
+
+    --border:#DFE1E6;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:"Inter",sans-serif;
+
+}
