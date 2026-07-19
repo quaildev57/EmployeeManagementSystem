@@ -1,36 +1,58 @@
 <div class="sidebar">
 
-    <div class="logo">
+    <div class="brand">
 
-        <h3>HRMS</h3>
+        <div class="logo">
+            <i class="bi bi-buildings-fill"></i>
+        </div>
+
+        <div>
+            <h2>AtlasHR</h2>
+            <span>Employee Portal</span>
+        </div>
 
     </div>
 
     <nav>
 
-        <a routerLink="/dashboard">
-            <i class="bi bi-grid-1x2-fill"></i>
+        <a routerLink="/dashboard"
+           routerLinkActive="active">
+
+            <i class="bi bi-speedometer2"></i>
+
             Dashboard
+
         </a>
 
-        <a routerLink="/employees">
+        <a routerLink="/employees"
+           routerLinkActive="active">
+
             <i class="bi bi-people-fill"></i>
+
             Employees
+
         </a>
 
-        <a routerLink="/add-employee">
+        <a routerLink="/add">
+
             <i class="bi bi-person-plus-fill"></i>
+
             Add Employee
+
         </a>
 
     </nav>
 
-    <button class="logout">
+    <div class="logout">
 
-        <i class="bi bi-box-arrow-right"></i>
+        <button>
 
-        Logout
+            <i class="bi bi-box-arrow-left"></i>
 
-    </button>
+            Logout
+
+        </button>
+
+    </div>
 
 </div>

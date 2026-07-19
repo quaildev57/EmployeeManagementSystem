@@ -7,6 +7,7 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-add-employee',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './employee-form.html',
   styleUrl: './employee-form.scss'

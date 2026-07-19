@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-employee-list',
   imports: [CommonModule, FormsModule],
-  templateUrl: './employee-list.html',
-  styleUrl: './employee-list.scss',
+  templateUrl: './employees.html',
+  styleUrl: './employees.scss',
   standalone: true,
 })
 export class EmployeeList implements OnInit {

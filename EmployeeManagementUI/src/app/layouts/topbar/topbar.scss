@@ -1,8 +1,18 @@
-.topbar{
+header{
 
-    height:70px;
+    position:fixed;
+
+    left:260px;
+
+    right:0;
+
+    top:0;
+
+    height:75px;
 
     background:white;
+
+    border-bottom:1px solid #E5E7EB;
 
     display:flex;
 
@@ -10,18 +20,76 @@
 
     align-items:center;
 
-    padding:0 32px;
+    padding:0 35px;
 
-    border-bottom:1px solid var(--border);
+    z-index:100;
 
 }
 
-.profile{
+header h3{
+
+    margin:0;
+
+}
+
+.actions{
 
     display:flex;
 
-    gap:10px;
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.search{
+
+    display:flex;
 
     align-items:center;
+
+    background:#F3F4F6;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+}
+
+.search input{
+
+    border:none;
+
+    background:transparent;
+
+    padding:12px;
+
+    outline:none;
+
+    width:250px;
+
+}
+
+.actions button{
+
+    border:none;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#F3F4F6;
+
+    cursor:pointer;
+
+}
+
+.actions img{
+
+    width:45px;
+
+    border-radius:50%;
 
 }
