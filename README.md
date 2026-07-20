@@ -248,13 +248,22 @@ Protected APIs
 
 # Screenshots
 
-Add screenshots of:
 
 - Login Page
+  <img width="1918" height="1020" alt="image" src="https://github.com/user-attachments/assets/a9ac9ce8-294e-4993-b506-878fc334d879" />
+
 - Dashboard
+  <img width="1906" height="1011" alt="image" src="https://github.com/user-attachments/assets/527f0cc9-594b-4950-b473-82289e1a200b" />
+
 - Employee List
+  <img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/e9adc351-dbb3-451b-b6f1-1b682acde885" />
+
 - Add Employee Form
+  <img width="1918" height="1005" alt="image" src="https://github.com/user-attachments/assets/ed7b8161-54c8-4e6f-9970-c9a45bdd414e" />
+
 - Edit Employee Form
+  <img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/38398eda-714f-4a75-b201-37366e294707" />
+
 
 ---
 
