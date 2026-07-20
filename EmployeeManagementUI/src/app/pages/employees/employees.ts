@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
 import {ChangeDetectorRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-employee-list',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './employees.html',
   styleUrl: './employees.scss',
   standalone: true,
@@ -56,7 +56,7 @@ editEmployee(employee: Employee) {
     });
 
   }
-  deleteEmployee(id: number) {
+  inactivateEmployee(id: number) {
 
     const confirmDelete = confirm(
       "Are you sure you want to inactivate this employee?"

@@ -1,40 +1,110 @@
-<h2>Add Employee</h2>
+<div class="form-page">
 
-<input
-type="text"
-placeholder="Full Name"
-[(ngModel)]="employee.fullName">
+    <div class="form-card">
 
-<br><br>
+        <div class="form-header">
 
-<input
-type="text"
-placeholder="Gender"
-[(ngModel)]="employee.gender">
+            <h1>{{ employee.empID === 0 ? 'Add Employee' : 'Edit Employee' }}</h1>
 
-<br><br>
+<p>
+    {{ employee.empID === 0
+        ? 'Fill in the employee details below.'
+        : 'Update employee information.' }}
+</p>
 
-<input
-type="email"
-placeholder="Email"
-[(ngModel)]="employee.email">
+            <p>Fill in the employee details below.</p>
 
-<br><br>
+        </div>
 
-<input
-type="text"
-placeholder="Phone"
-[(ngModel)]="employee.phone">
+        <div class="form-grid">
 
-<br><br>
+            <div class="form-group">
 
-<input
-type="number"
-placeholder="Salary"
-[(ngModel)]="employee.salary">
+                <label>Full Name</label>
 
-<br><br>
+                <input
+                    type="text"
+                    placeholder="Enter full name"
+                    [(ngModel)]="employee.fullName">
 
-<button (click)="saveEmployee()">
-Save 
-</button>
+            </div>
+
+            <div class="form-group">
+
+                <label>Gender</label>
+
+<select [(ngModel)]="employee.gender">
+    <option value="">Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+</select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    placeholder="Enter email"
+                    [(ngModel)]="employee.email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Phone</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter phone number"
+                    [(ngModel)]="employee.phone">
+
+            </div>
+            <div class="form-group">
+
+    <label>Department</label>
+
+    <select [(ngModel)]="employee.deptID">
+
+        <option [value]="1">HR</option>
+
+        <option [value]="2">IT</option>
+
+        <option [value]="3">Finance</option>
+
+
+    </select>
+
+</div>
+
+            <div class="form-group">
+
+                <label>Salary</label>
+
+                <input
+                    type="number"
+                    placeholder="Enter salary"
+                    [(ngModel)]="employee.salary">
+
+            </div>
+
+        </div>
+
+        <div class="button-group">
+
+            <button class="cancel-btn" routerLink="/employees">
+                Cancel
+            </button>
+
+            <button class="save-btn" (click)="saveEmployee()">
+                Save Employee
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

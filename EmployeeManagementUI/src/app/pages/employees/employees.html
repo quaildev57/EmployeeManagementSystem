@@ -95,15 +95,19 @@
         Edit
     </button>
 
-    <button (click)="deleteEmployee(emp.empID)">
+    <button (click)="inactivateEmployee(emp.empID)">
         Delete
     </button>
 </td>
     </tr>
 
 </table>
-<div *ngIf="filteredEmployees.length === 0">
+<div class="empty" *ngIf="filteredEmployees.length === 0">
+
+    <i class="bi bi-person-x-fill"></i>
 
     <h3>No Employees Found</h3>
+
+    <p>Try changing your search or add a new employee.</p>
 
 </div>

@@ -66,7 +66,7 @@ header h3{
 
     outline:none;
 
-    width:250px;
+    width:320px;
 
 }
 
@@ -84,6 +84,14 @@ header h3{
 
     cursor:pointer;
 
+    
+}
+.actions button:hover{
+
+background:#E9F2FF;
+
+color:#0C66E4;
+
 }
 
 .actions img{
@@ -91,5 +99,42 @@ header h3{
     width:45px;
 
     border-radius:50%;
+
+}
+.notification{
+
+position:relative;
+
+}
+
+.notification span{
+
+position:absolute;
+
+top:8px;
+
+right:8px;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:#EF4444;
+
+}
+
+.actions img{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.actions img:hover{
+
+transform:scale(1.08);
 
 }

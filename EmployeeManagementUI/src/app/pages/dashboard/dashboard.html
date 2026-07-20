@@ -1,9 +1,134 @@
-<h1 style="color:red">THIS IS MY DASHBOARD</h1>
+<div class="dashboard">
 
-<h2>Dashboard</h2>
+    <div class="hero">
 
-<h3>Welcome {{username}} 👋</h3>
+        <div>
 
-<p><strong>Role:</strong> {{role}}</p>
+            <h1>Good to see you, {{username}} 👋</h1>
 
-<p><strong>Department:</strong> {{department}}</p>
+            <p>
+                Welcome back to the Employee Management System.
+                Here's a quick overview of your workspace.
+            </p>
+
+        </div>
+
+        <button class="primary-btn" routerLink="/add-employee">
+
+            <i class="bi bi-person-plus-fill"></i>
+
+            Add Employee
+
+        </button>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="card">
+
+            <div class="icon blue">
+
+                <i class="bi bi-people-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h2>Employees</h2>
+                <h3>120</h3>
+               
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon green">
+
+                <i class="bi bi-building"></i>
+
+            </div>
+
+            <div>
+
+                <h2>Department</h2>
+
+                <h3>{{department}}</h3>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon orange">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h2>Role</h2>
+
+                <h3>{{role}}</h3>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon red">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h2>Status</h2>
+
+                <h3>Online</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom-grid">
+
+    <div class="panel">
+
+        <h2>Quick Actions</h2>
+
+        <button routerLink="/add-employee">
+            Add Employee
+        </button>
+
+        <button routerLink="/employees">
+            View Employees
+        </button>
+
+    </div>
+
+        <div class="panel">
+
+            <h2>Your Profile</h2>
+
+            <p><strong>Name</strong></p>
+            <span>{{username}}</span>
+
+            <p><strong>Role</strong></p>
+            <span>{{role}}</span>
+
+            <p><strong>Department</strong></p>
+            <span>{{department}}</span>
+
+        </div>
+
+    </div>
+
+</div>

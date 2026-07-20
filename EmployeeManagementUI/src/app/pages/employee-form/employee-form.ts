@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../core/services/employee.service';
 import { Employee } from '../../shared/models/employee';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-add-employee',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './employee-form.html',
   styleUrl: './employee-form.scss'
 })
@@ -61,6 +61,7 @@ employee: Employee = {
   constructor(
   private employeeService: EmployeeService,
   private route: ActivatedRoute,
+  private router: Router,
   private cdr: ChangeDetectorRef
 ) {}
 saveEmployee() {
@@ -74,6 +75,7 @@ saveEmployee() {
     this.employeeService.addEmployee(this.employee).subscribe({
       next: () => {
         alert("Employee Added Successfully");
+        this.router.navigate(['/employees']);
       }
     });
 
@@ -84,6 +86,7 @@ saveEmployee() {
     this.employeeService.updateEmployee(this.employee).subscribe({
       next: () => {
         alert("Employee Updated Successfully");
+        this.router.navigate(['/employees']);
       }
     });
 
