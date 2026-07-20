@@ -318,8 +318,8 @@ Jaypee Institute of Information Technology
 ## Connect with Me
 
 - [LinkedIn](https://www.linkedin.com/in/https://www.linkedin.com/in/hrishita-raj-singh-1392a7417?utm_source=share_via&utm_content=profile&utm_medium=member_ios/)
-- [GitHub](https://github.com/your-username)
-GitHub: https://github.com/<https://github.com/quaildev57>
+- [GitHub](https://github.com/https://github.com/quaildev57)
+
 
 
 ---
